@@ -51,11 +51,11 @@ func (c Client) GetProfile(id int64) (Profile, error) {
 
 	content, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return p, fmt.Errorf("read body: %v", err)
+		return p, fmt.Errorf("failed to read body: %v", err)
 	}
 
 	if err = json.Unmarshal(content, &p.data); err != nil {
-		return p, fmt.Errorf("parse json from \"%s\": %v", content, err)
+		return p, fmt.Errorf("failed to parse json from \"%s\": %v", content, err)
 	}
 
 	return p, checkError(bytes.NewReader(content))

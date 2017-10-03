@@ -41,13 +41,13 @@ func (c Client) SetGetStartedPayload(p string) error {
 func (c Client) postSetting(data interface{}) error {
 	encoded, err := json.Marshal(data)
 	if err != nil {
-		return fmt.Errorf("json of %#v: %v", data, err)
+		return fmt.Errorf("failed to get json of %#v: %v", data, err)
 	}
 
 	url := fmt.Sprintf(settingsURL, c.api, c.token, c.secretProof)
 	resp, err := http.Post(url, "application/json", bytes.NewBuffer(encoded))
 	if err != nil {
-		return fmt.Errorf("post \"%s\" to %#v: %v", encoded, url, err)
+		return fmt.Errorf("failed to post \"%s\" to %#v: %v", encoded, url, err)
 	}
 	defer func() {
 		_ = resp.Body.Close()
