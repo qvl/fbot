@@ -16,9 +16,9 @@ const profileURL = "%s/%d?fields=first_name,locale,timezone&access_token=%s&apps
 // needs to be in sync with the URL above.
 type Profile struct {
 	data struct {
-		Name     string `json:"first_name"`
-		Locale   string `json:"locale"`
-		Timezone int    `json:"timezone"`
+		Name     string  `json:"first_name"`
+		Locale   string  `json:"locale"`
+		Timezone float64 `json:"timezone"`
 	}
 }
 
